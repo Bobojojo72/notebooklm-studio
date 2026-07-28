@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en-GB" data-theme="dark" data-density="comfortable">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NotebookLM Studio</title>
+<meta name="description" content="Jo's NotebookLM control panel: styles, prompts and workflows in one place.">
+<meta name="theme-color" content="#0d0f14">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="stylesheet" href="assets/app.css">
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <p class="kicker">NotebookLM control panel</p>
+    <h1>Styles, prompts and workflows<em>, one keystroke away</em></h1>
+  </div>
+</header>
+
+<div class="toolbar">
+  <div class="wrap">
+    <label class="topic">
+      <span class="topiclabel">Your topic</span>
+      <input id="topic" type="text" placeholder="What is this notebook about?" autocomplete="off">
+    </label>
+    <label class="search">
+      <input id="q" type="search" placeholder="Search this tab" autocomplete="off" aria-label="Search this tab">
+    </label>
+    <select id="context" aria-label="Filter by context">
+      <option value="">Any context</option>
+      <option value="sales">Sales</option>
+      <option value="wisdom">Wisdom Bytes</option>
+      <option value="learning">Learning</option>
+      <option value="general">General</option>
+    </select>
+    <button class="btn" id="palettebtn" title="Search everything">Search all <kbd>Ctrl K</kbd></button>
+    <button class="btn" id="theme" aria-label="Switch theme">Theme</button>
+    <button class="btn" id="density" aria-label="Switch density">Density</button>
+    <a class="btn" id="opennlm" href="https://notebooklm.google.com" target="_blank" rel="noopener">Open NotebookLM</a>
+  </div>
+</div>
+
+<nav class="tabs">
+  <div class="wrap" role="tablist" aria-label="Sections">
+    <button role="tab" data-tab="styles" aria-selected="true" aria-controls="view">Styles</button>
+    <button role="tab" data-tab="chat" aria-selected="false" aria-controls="view">Chat prompts</button>
+    <button role="tab" data-tab="studio" aria-selected="false" aria-controls="view">Studio prompts</button>
+    <button role="tab" data-tab="workflows" aria-selected="false" aria-controls="view">Workflows</button>
+    <button role="tab" data-tab="tips" aria-selected="false" aria-controls="view">Tips</button>
+  </div>
+</nav>
+
+<main class="wrap">
+  <section id="rail" class="rail" hidden></section>
+  <section id="filters" class="filters"></section>
+  <p id="count" class="count"></p>
+  <div id="view" role="tabpanel" tabindex="0"></div>
+  <p id="empty" class="empty" hidden>Nothing matches. Clear the search or pick another filter.</p>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>Style specifications by u/Paolo-Cortez on r/notebooklm. Everything else assembled from Jo's own NotebookLM notes.</p>
+  </div>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="data/styles.js"></script>
+<script src="data/quick-styles.js"></script>
+<script src="data/chat-prompts.js"></script>
+<script src="data/studio-prompts.js"></script>
+<script src="data/workflows.js"></script>
+<script src="data/tips.js"></script>
+<script src="assets/lib.js"></script>
+<script src="assets/app.js"></script>
+</body>
+</html>

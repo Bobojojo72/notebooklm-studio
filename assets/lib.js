@@ -113,6 +113,26 @@
     return true;
   };
 
+  // Shortcut filters for the Styles tab. Deliberately rules over vibe and background
+  // brightness rather than hand-written lists of style names, which would rot on a rename.
+  // light: true means a light background is required, null means either will do.
+  lib.useCases = [
+    { key: 'prospect', label: 'Prospect one-pager', vibes: ['editorial', 'technical'], light: true },
+    { key: 'wisdom', label: 'Wisdom Bytes explainer', vibes: ['playful', 'hand-drawn'], light: null },
+    { key: 'report', label: 'Monthly report', vibes: ['editorial', 'luxe'], light: true },
+    { key: 'study', label: 'Study aid', vibes: ['hand-drawn', 'technical'], light: null }
+  ];
+
+  lib.useCase = function (rec, key) {
+    var uc = lib.useCases.filter(function (u) { return u.key === key; })[0];
+    if (!uc) return false;
+    var vibes = rec.vibes || [];
+    var hit = uc.vibes.some(function (v) { return vibes.indexOf(v) > -1; });
+    if (!hit) return false;
+    if (uc.light === null || !rec.bg) return true;
+    return (lib.luminance(rec.bg) >= 0.45) === uc.light;
+  };
+
   // ---------- render: every function here returns a string and touches no DOM ----------
 
   lib.esc = function (s) {

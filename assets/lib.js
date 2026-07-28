@@ -160,18 +160,18 @@
     }).join('');
   }
 
+  // Full-bleed bands of the style's own palette, with the name sitting on the
+  // background colour so the pairing of background, text and accent is visible at a glance.
   lib.thumbHTML = function (d) {
-    var bars = (d.sec && d.sec.length ? d.sec : [d.ac]).slice(0, 3);
-    var heights = [62, 100, 45];
-    var barHTML = bars.map(function (c, i) {
-      return '<i style="height:' + heights[i % 3] + '%;background:' + lib.esc(c) + '"></i>';
+    var bands = [d.ac].concat(d.sec || []).slice(0, 6);
+    var bandHTML = bands.map(function (c) {
+      return '<i style="background:' + lib.esc(c) + '"></i>';
     }).join('');
-    return '<div class="thumb" style="background:' + lib.esc(d.bg) + '">' +
-      '<span class="t-title" style="background:' + lib.esc(d.tx) + '"></span>' +
-      '<span class="t-rule" style="background:' + lib.esc(d.ac) + '"></span>' +
-      '<span class="t-bars">' + barHTML +
-      '<em class="t-ring" style="border-color:' + lib.esc(d.ac) + '"></em></span>' +
-      '</div>';
+    var label = String(d.name || '').split(' ')[0];
+    return '<div class="thumb" style="background:' + lib.esc(d.bg) + '">' + bandHTML +
+      '<div class="preview"><span style="background:' + lib.esc(d.bg) +
+      ';color:' + lib.esc(d.tx) + ';border:1px solid ' + lib.esc(d.ac) + '">' +
+      lib.esc(label) + '</span></div></div>';
   };
 
   lib.paletteHTML = function (d) {
@@ -191,10 +191,11 @@
     return '<dl>' + out + '</dl>';
   }
 
-  lib.styleCard = function (d) {
+  lib.styleCard = function (d, n) {
+    var num = n ? '<p class="num">' + String(n).padStart(2, '0') + '</p>' : '';
     return '<article class="card" data-id="' + lib.esc(d.id) + '" data-kind="style">' +
       lib.thumbHTML(d) +
-      '<div class="cardhead">' +
+      '<div class="cardhead">' + num +
         '<h3>' + lib.esc(d.name) + '</h3>' +
         '<p class="tone">' + lib.esc(d.tone) + '</p>' +
         '<div class="tags">' + tagList(d.tags) + '</div>' +

@@ -29,8 +29,8 @@
     return data.tips;
   }
 
-  function cardFor(rec, tab) {
-    if (tab === 'styles') return rec.img ? lib.styleCard(rec) : lib.promptCard(rec, 'quickstyle');
+  function cardFor(rec, tab, n) {
+    if (tab === 'styles') return rec.img ? lib.styleCard(rec, n) : lib.promptCard(rec, 'quickstyle');
     if (tab === 'workflows') return lib.workflowCard(rec);
     return lib.promptCard(rec, tab === 'studio' ? 'studio' : 'chat');
   }
@@ -87,7 +87,7 @@
       view.innerHTML = rows.map(lib.tipSection).join('');
     } else {
       view.innerHTML = '<div class="grid">' +
-        rows.map(function (r) { return cardFor(r, App.state.tab); }).join('') + '</div>';
+        rows.map(function (r, i) { return cardFor(r, App.state.tab, i + 1); }).join('') + '</div>';
     }
     $('count').textContent = rows.length + (rows.length === 1 ? ' item' : ' items');
     $('empty').hidden = rows.length > 0;

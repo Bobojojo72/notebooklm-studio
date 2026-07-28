@@ -27,6 +27,24 @@ test('thumbHTML paints the style palette and never loads an image', () => {
   assert.ok(!html.includes('http'), 'no network reference');
 });
 
+test('thumbHTML is a banner of full-bleed palette bands with a name pill', () => {
+  const html = lib.thumbHTML(style);
+  assert.ok(html.includes('class="thumb" style="background:#223C63"'), 'banner is the background colour');
+  const bands = html.match(/<i style="background:#[0-9A-Fa-f]{6}"><\/i>/g) || [];
+  assert.equal(bands.length, 3, 'accent plus both secondaries become bands');
+  assert.ok(html.indexOf('#DCB35C') < html.indexOf('#A83232'), 'accent band comes first');
+  assert.ok(html.includes('<div class="preview">'), 'has the name overlay');
+  assert.ok(html.includes('>Textured<'), 'pill shows the first word of the name');
+  assert.ok(html.includes('color:#FFFFFF'), 'pill uses the style text colour');
+  assert.ok(html.includes('border:1px solid #DCB35C'), 'pill is outlined in the accent');
+});
+
+test('styleCard numbers the card only when given a position', () => {
+  assert.ok(!lib.styleCard(style).includes('class="num"'));
+  assert.ok(lib.styleCard(style, 7).includes('>07<'));
+  assert.ok(lib.styleCard(style, 12).includes('>12<'));
+});
+
 test('styleCard carries the identifiers the click handler needs', () => {
   const html = lib.styleCard(style);
   assert.ok(html.includes('data-id="textured-denim-craft"'));

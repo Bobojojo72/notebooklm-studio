@@ -246,6 +246,13 @@ write('workflows.js', 'workflows', workflows.filter(w => {
 // ---------- 6. tips: whole sections rendered as simple HTML ----------
 const esc = s => String(s).replace(/[&<>]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' }[c]));
 
+// Escape first, then turn the surviving markdown markers into real tags. Without this
+// the tips panels display literal **asterisks** and backticks.
+const inline = s => esc(s)
+  .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
+  .replace(/`([^`]+)`/g, '<code>$1</code>')
+  .replace(/(^|\s)\*([^*\s][^*]*)\*/g, '$1<em>$2</em>');
+
 function sectionsToHtml(md, wanted) {
   const lines = md.split(/\r?\n/);
   const out = [];
@@ -262,17 +269,20 @@ function sectionsToHtml(md, wanted) {
       continue;
     }
     if (!current) continue;
+    // Horizontal rules, escaped or not, are section separators in the source and
+    // have no meaning once each section is its own panel.
+    if (/^\\?-{3,}$/.test(line.trim())) continue;
     const h3 = line.match(/^###\s+(.*)$/);
-    if (h3) { current.html += '<h3>' + esc(unescapeMd(h3[1])) + '</h3>'; continue; }
+    if (h3) { current.html += '<h3>' + inline(unescapeMd(h3[1])) + '</h3>'; continue; }
     if (line.startsWith('|')) {
       const cells = line.split('|').map(c => unescapeMd(c)).filter(Boolean);
       if (cells.every(c => /^-+$/.test(c))) continue;
-      current.html += '<p class="row">' + esc(cells.join('  ·  ')) + '</p>';
+      current.html += '<p class="row">' + inline(cells.join(' · ')) + '</p>';
       continue;
     }
     const li = line.match(/^[-*]\s+(.*)$/) || line.match(/^\d+\.\s+(.*)$/);
-    if (li) { current.html += '<li>' + esc(unescapeMd(li[1])) + '</li>'; continue; }
-    if (line.trim()) current.html += '<p>' + esc(unescapeMd(line.replace(/^>\s?/, ''))) + '</p>';
+    if (li) { current.html += '<li>' + inline(unescapeMd(li[1])) + '</li>'; continue; }
+    if (line.trim()) current.html += '<p>' + inline(unescapeMd(line.replace(/^>\s?/, ''))) + '</p>';
   }
   if (current) out.push(current);
   return out.filter(s => s.html);

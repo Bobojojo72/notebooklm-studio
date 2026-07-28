@@ -25,11 +25,23 @@ self.addEventListener('activate', function (e) {
   }).then(function () { return self.clients.claim(); }));
 });
 
+// Network first, cache second. Cache first would keep serving yesterday's prompts
+// after an update, because the cache name only changes when this file does.
+// ignoreSearch matters on the fallback: a URL like index.html?v=2 would otherwise
+// miss the cache entirely and leave a blank page with no network.
 self.addEventListener('fetch', function (e) {
   if (e.request.method !== 'GET') return;
-  // ignoreSearch matters: a URL like index.html?v=2 would otherwise miss the cache
-  // entirely and leave a blank page when there is no network.
-  e.respondWith(caches.match(e.request, { ignoreSearch: true }).then(function (hit) {
-    return hit || fetch(e.request);
-  }));
+  e.respondWith(
+    fetch(e.request).then(function (res) {
+      if (res && res.ok) {
+        var copy = res.clone();
+        caches.open(CACHE).then(function (c) { c.put(e.request, copy); });
+      }
+      return res;
+    }).catch(function () {
+      return caches.match(e.request, { ignoreSearch: true }).then(function (hit) {
+        return hit || caches.match('./index.html');
+      });
+    })
+  );
 });

@@ -94,13 +94,22 @@
     if (App.restorePins) App.restorePins();
   };
 
-  App.setTab = function (name) {
+  var TABS = ['styles', 'chat', 'studio', 'workflows', 'tips'];
+
+  App.setTab = function (name, skipHash) {
+    if (TABS.indexOf(name) === -1) name = 'styles';
     App.state.tab = name;
     Array.prototype.forEach.call(document.querySelectorAll('[role="tab"]'), function (b) {
       b.setAttribute('aria-selected', String(b.dataset.tab === name));
     });
+    // The tab lives in the hash so a particular tab can be bookmarked.
+    if (!skipHash && location.hash.slice(1) !== name) location.hash = name;
     App.render();
   };
+
+  window.addEventListener('hashchange', function () {
+    App.setTab(location.hash.slice(1), true);
+  });
 
   document.querySelector('.tabs').addEventListener('click', function (e) {
     var b = e.target.closest('[role="tab"]');
@@ -382,5 +391,5 @@
   renderRail();
 
   window.App = App;
-  App.render();
+  App.setTab(location.hash.slice(1) || 'styles', true);
 })();

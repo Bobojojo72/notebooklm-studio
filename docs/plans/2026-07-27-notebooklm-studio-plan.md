@@ -938,7 +938,7 @@ Expected: PASS, 13 tests
 
 - [ ] **Step 5: Run the whole suite**
 
-Run: `node --test tests/`
+Run: `node --test "tests/*.test.js"`
 Expected: PASS, 30 tests across three files (8 parse, 9 data, 13 lib)
 
 - [ ] **Step 6: Commit**
@@ -2146,7 +2146,7 @@ Type your topic in the box at the top. Every Copy button then hands you your top
 Never edit anything in `data/` by hand. Those files are generated. Change the source markdown in the NotebookLM project folder, then run:
 
     node tools/extract.js
-    node --test tests/
+    node --test "tests/*.test.js"
 
 ## Working on the code
 
@@ -2156,7 +2156,7 @@ There is no build step and no dependencies. Open `index.html` in a browser, or s
 
 Run the tests with:
 
-    node --test tests/
+    node --test "tests/*.test.js"
 
 ## Important
 
@@ -2195,7 +2195,7 @@ git commit -m "Add offline support, installability and accessibility attributes"
 
 - [ ] **Step 1: Run the full test suite**
 
-Run: `node --test tests/`
+Run: `node --test "tests/*.test.js"`
 Expected: PASS, all files, zero failures.
 
 - [ ] **Step 2: Work the manual checklist**

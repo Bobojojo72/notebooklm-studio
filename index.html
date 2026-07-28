@@ -75,5 +75,14 @@
 <script src="data/tips.js"></script>
 <script src="assets/lib.js"></script>
 <script src="assets/app.js"></script>
+<script>
+// Registering a service worker throws over file://, and the page must stay silent
+// when it is opened straight from the H: drive.
+if ('serviceWorker' in navigator && location.protocol.indexOf('http') === 0) {
+  window.addEventListener('load', function () {
+    navigator.serviceWorker.register('sw.js').catch(function () { /* offline mode simply unavailable */ });
+  });
+}
+</script>
 </body>
 </html>

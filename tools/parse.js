@@ -4,7 +4,7 @@
 // Strip the backslashes back off so the prompts read as plain text.
 function unescapeMd(text) {
   return String(text)
-    .replace(/\\+([[\]*_`~()#+\-.!])/g, '$1')
+    .replace(/\\+([[\]*_`~()#+\-.!&|])/g, '$1')
     .replace(/ /g, ' ')
     .trim();
 }
@@ -78,7 +78,8 @@ function parseBlocks(markdown) {
       continue;
     }
 
-    if (line === '') continue;
+    // A blank line closes the current blockquote. Without this, several bare quotes
+    // under one heading would run together into a single block.
     flush();
   }
   flush();

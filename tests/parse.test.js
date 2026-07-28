@@ -47,6 +47,26 @@ test('parseBlocks joins a blockquote that wraps over several lines', () => {
   assert.equal(parseBlocks(md)[0].body, 'first line second line');
 });
 
+test('parseBlocks splits separate blockquotes under one heading into separate blocks', () => {
+  const md = [
+    '## PART 9: SOURCE DISCOVERY PROMPTS',
+    '',
+    '> 📌 What sources am I missing?',
+    '',
+    '> 📌 Where are the gaps in my research?',
+    ''
+  ].join('\n');
+  const blocks = parseBlocks(md);
+  assert.equal(blocks.length, 2);
+  assert.equal(blocks[0].body, 'What sources am I missing?');
+  assert.equal(blocks[1].body, 'Where are the gaps in my research?');
+  assert.notEqual(blocks[0].name, blocks[1].name);
+});
+
+test('unescapeMd strips escaped ampersands used in table headings', () => {
+  assert.equal(unescapeMd('Retro \\& Vintage'), 'Retro & Vintage');
+});
+
 test('parseBlocks ignores blockquotes that are notes rather than prompts', () => {
   const md = ['## HOW TO USE THESE', '', '> 💡 Strategic tip: choose by goal.', ''].join('\n');
   assert.equal(parseBlocks(md).length, 0);

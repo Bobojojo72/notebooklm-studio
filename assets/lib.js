@@ -113,6 +113,19 @@
     return true;
   };
 
+  // The single entry point the page uses for every copy action. Fields are applied
+  // first so a filled [TOPIC] is not then duplicated by a "Topic:" prefix.
+  lib.bodyFor = function (rec, kind, topic, values) {
+    if (kind === 'style') return lib.composeStyle(topic, lib.specText(rec));
+    if (kind === 'workflow') {
+      var numbered = (rec.steps || []).map(function (s, i) {
+        return (i + 1) + '. ' + s;
+      }).join('\n');
+      return lib.composePrompt(topic, numbered);
+    }
+    return lib.composePrompt(topic, lib.applyFields(rec.body, values));
+  };
+
   // Shortcut filters for the Styles tab. Deliberately rules over vibe and background
   // brightness rather than hand-written lists of style names, which would rot on a rename.
   // light: true means a light background is required, null means either will do.

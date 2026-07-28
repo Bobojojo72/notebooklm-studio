@@ -113,5 +113,117 @@
     return true;
   };
 
+  // ---------- render: every function here returns a string and touches no DOM ----------
+
+  lib.esc = function (s) {
+    return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c];
+    });
+  };
+
+  function tagList(tags) {
+    return (tags || []).map(function (t) {
+      return '<span class="tag">' + lib.esc(t) + '</span>';
+    }).join('');
+  }
+
+  lib.thumbHTML = function (d) {
+    var bars = (d.sec && d.sec.length ? d.sec : [d.ac]).slice(0, 3);
+    var heights = [62, 100, 45];
+    var barHTML = bars.map(function (c, i) {
+      return '<i style="height:' + heights[i % 3] + '%;background:' + lib.esc(c) + '"></i>';
+    }).join('');
+    return '<div class="thumb" style="background:' + lib.esc(d.bg) + '">' +
+      '<span class="t-title" style="background:' + lib.esc(d.tx) + '"></span>' +
+      '<span class="t-rule" style="background:' + lib.esc(d.ac) + '"></span>' +
+      '<span class="t-bars">' + barHTML +
+      '<em class="t-ring" style="border-color:' + lib.esc(d.ac) + '"></em></span>' +
+      '</div>';
+  };
+
+  lib.paletteHTML = function (d) {
+    var all = [['bg', d.bg], ['text', d.tx], ['accent', d.ac]]
+      .concat((d.sec || []).map(function (c) { return ['', c]; }));
+    return '<div class="palette">' + all.map(function (pair) {
+      return '<button class="hex" data-act="copyhex" data-hex="' + lib.esc(pair[1]) + '" ' +
+        'title="Copy ' + lib.esc(pair[1]) + '">' +
+        '<b style="background:' + lib.esc(pair[1]) + '"></b>' +
+        (pair[0] ? lib.esc(pair[0]) + ' ' : '') + lib.esc(pair[1]) + '</button>';
+    }).join('') + '</div>';
+  };
+
+  function specDl(obj) {
+    var out = '';
+    for (var k in obj) out += '<dt>' + lib.esc(k) + '</dt><dd>' + lib.esc(obj[k]) + '</dd>';
+    return '<dl>' + out + '</dl>';
+  }
+
+  lib.styleCard = function (d) {
+    return '<article class="card" data-id="' + lib.esc(d.id) + '" data-kind="style">' +
+      lib.thumbHTML(d) +
+      '<div class="cardhead">' +
+        '<h3>' + lib.esc(d.name) + '</h3>' +
+        '<p class="tone">' + lib.esc(d.tone) + '</p>' +
+        '<div class="tags">' + tagList(d.tags) + '</div>' +
+      '</div>' +
+      lib.paletteHTML(d) +
+      '<details class="spec"><summary>Full specification</summary><div class="specbody">' +
+        '<div class="speclabel">Image style</div>' + specDl(d.img) +
+        '<div class="speclabel">Typography</div>' + specDl(d.typo) +
+        (d.also ? '<div class="speclabel">Note</div><p class="note">' + lib.esc(d.also) + '</p>' : '') +
+      '</div></details>' +
+      '<div class="actions">' +
+        '<button class="copy" data-act="copy">Copy</button>' +
+        '<button class="ghost" data-act="preview">Preview</button>' +
+        '<button class="ghost pin" data-act="pin" aria-pressed="false" aria-label="Pin this style">&#9733;</button>' +
+      '</div>' +
+    '</article>';
+  };
+
+  lib.promptCard = function (rec, kind) {
+    var fields = lib.fieldsIn(rec.body);
+    var fieldHTML = fields.length
+      ? '<div class="fields">' + fields.map(function (f) {
+          return '<label class="field"><span>' + lib.esc(f) + '</span>' +
+            '<input type="text" data-field="' + lib.esc(f) + '" placeholder="' + lib.esc(f) + '"></label>';
+        }).join('') + '</div>'
+      : '';
+    var label = rec.output || rec.family || rec.section || '';
+    return '<article class="pcard" data-id="' + lib.esc(rec.id) + '" data-kind="' + lib.esc(kind) + '">' +
+      (label ? '<p class="plabel">' + lib.esc(label) + '</p>' : '') +
+      '<h4>' + lib.esc(rec.name) + '</h4>' +
+      (rec.why ? '<p class="pwhy">' + lib.esc(rec.why) + '</p>' : '') +
+      '<p class="ptext">' + lib.esc(rec.body) + '</p>' +
+      fieldHTML +
+      '<div class="actions">' +
+        '<button class="copy" data-act="copy">Copy</button>' +
+        '<button class="ghost pin" data-act="pin" aria-pressed="false" aria-label="Pin this prompt">&#9733;</button>' +
+      '</div>' +
+    '</article>';
+  };
+
+  lib.workflowCard = function (w) {
+    var steps = (w.steps || []).map(function (s, i) {
+      return '<li><span>' + lib.esc(s) + '</span>' +
+        '<button class="ghost" data-act="copystep" data-step="' + i + '">Copy</button></li>';
+    }).join('');
+    return '<article class="wcard" data-id="' + lib.esc(w.id) + '" data-kind="workflow">' +
+      '<h4>' + lib.esc(w.name) + '</h4>' +
+      (w.why ? '<p class="pwhy">' + lib.esc(w.why) + '</p>' : '') +
+      '<ol class="wsteps">' + steps + '</ol>' +
+      '<div class="actions">' +
+        '<button class="copy" data-act="copyall">Copy all steps</button>' +
+        '<button class="ghost pin" data-act="pin" aria-pressed="false" aria-label="Pin this workflow">&#9733;</button>' +
+      '</div>' +
+    '</article>';
+  };
+
+  // t.html was built by tools/extract.js, which escapes every value taken from the
+  // source files. Nothing user-supplied reaches this, so it is inserted as markup.
+  lib.tipSection = function (t) {
+    return '<section class="panel" data-id="' + lib.esc(t.id) + '">' +
+      '<h2>' + lib.esc(t.title) + '</h2>' + t.html + '</section>';
+  };
+
   root.NLMLib = lib;
 })(typeof globalThis !== 'undefined' ? globalThis : this);

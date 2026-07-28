@@ -226,7 +226,9 @@ function parseWorkflows(md, sectionRe) {
     const meta = line.match(/^\*\*(.+?):?\*\*\s*(.*)$/);
     if (meta) { current.why = unescapeMd(meta[1] + (meta[2] ? ': ' + meta[2] : '')); continue; }
     const step = line.match(/^\d+\.\s+(.*)$/);
-    if (step) current.steps.push(unescapeMd(step[1]).replace(/^\*|\*$/g, ''));
+    // Asterisks in these steps are only markdown emphasis around quoted prompts.
+    // They carry no meaning once pasted into NotebookLM, so strip them all.
+    if (step) current.steps.push(unescapeMd(step[1]).replace(/\*/g, '').trim());
   }
   if (current) out.push(current);
   return out.filter(w => w.steps.length >= 3);

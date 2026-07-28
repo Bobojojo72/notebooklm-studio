@@ -6,8 +6,8 @@
   "steps": [
    "Add any new articles, reports, or press releases about your territory (LinkedIn, Google Alerts, trade press)",
    "Add the URL of any prospect company websites you're researching this week",
-   "Ask: *\"What's changed in my territory this week? What signals suggest companies are growing, moving, or changing their operations?\"",
-   "Ask: *\"Which of these companies shows the strongest signals for packaging or logistics need?\"",
+   "Ask: \"What's changed in my territory this week? What signals suggest companies are growing, moving, or changing their operations?\"",
+   "Ask: \"Which of these companies shows the strongest signals for packaging or logistics need?\"",
    "Save the output as a Studio note and use it to prioritise your call list"
   ],
   "context": "sales",
@@ -21,11 +21,11 @@
   "why": "Goal: Go from zero knowledge to confident expert on a topic",
   "steps": [
    "Upload 3–5 foundational sources (overview article, Wikipedia page, key report)",
-   "Ask: *\"What are the 10 most important things to understand about [topic]?\"",
-   "For each item: *\"Explain [item] in more depth\"",
+   "Ask: \"What are the 10 most important things to understand about [topic]?\"",
+   "For each item: \"Explain [item] in more depth\"",
    "Generate a Study Guide from Studio",
    "Add more advanced sources",
-   "Ask: *\"How does this new source change or add to the overview you gave me?\""
+   "Ask: \"How does this new source change or add to the overview you gave me?\""
   ],
   "context": "general",
   "tags": [
@@ -38,12 +38,12 @@
   "why": "Notebook: One notebook per episode topic",
   "steps": [
    "Add sources: relevant YouTube videos (experts explaining the topic), articles, Google's own documentation if relevant",
-   "Add a context note: *\"I'm creating a YouTube video for people aged 55–75 who are curious about AI but nervous about technology. The video needs to be reassuring, jargon-free, and practically useful.\"",
-   "Ask: *\"What are the 3–5 most important and relatable points for my audience?\"",
-   "Ask: *\"What common fears or misconceptions does this topic raise? How are they addressed?\"",
-   "Ask: *\"Give me 5 real-world examples of how an everyday person would use this\"",
+   "Add a context note: \"I'm creating a YouTube video for people aged 55–75 who are curious about AI but nervous about technology. The video needs to be reassuring, jargon-free, and practically useful.\"",
+   "Ask: \"What are the 3–5 most important and relatable points for my audience?\"",
+   "Ask: \"What common fears or misconceptions does this topic raise? How are they addressed?\"",
+   "Ask: \"Give me 5 real-world examples of how an everyday person would use this\"",
    "Generate a Briefing Doc — this becomes your episode research document",
-   "Ask: *\"Write a 5-minute script outline using the most accessible and reassuring framing\""
+   "Ask: \"Write a 5-minute script outline using the most accessible and reassuring framing\""
   ],
   "context": "wisdom",
   "tags": [
@@ -57,10 +57,10 @@
   "steps": [
    "Upload the document",
    "Add a context note explaining what you're looking for and why",
-   "Ask: *\"Summarise this document in 200 words\"",
-   "Ask: *\"What are the key obligations, commitments, or risks on my side?\"",
-   "Ask: *\"Flag anything unusual, one-sided, or that I should question\"",
-   "Ask: *\"What questions should I ask before signing/agreeing to this?\""
+   "Ask: \"Summarise this document in 200 words\"",
+   "Ask: \"What are the key obligations, commitments, or risks on my side?\"",
+   "Ask: \"Flag anything unusual, one-sided, or that I should question\"",
+   "Ask: \"What questions should I ask before signing/agreeing to this?\""
   ],
   "context": "general",
   "tags": [

@@ -37,6 +37,12 @@ Run the tests with:
 
     node --test "tests/*.test.js"
 
+## BP555 operator kit
+
+`bp555/` holds customer handouts for the Better Pack 555e (BP555) gummed tape dispenser: three slide decks and four A4 quick-reference cards, all built from the Better Packages 555e User Manual (Rev 3.1). Open `bp555/index.html`. Each deck has a Present button for full-screen use; every deck and card has a ready-made PDF in `bp555/pdf/`.
+
+After editing a page, regenerate the PDFs from inside `bp555/` with `node tools/export-pdf.js` (needs Playwright installed globally).
+
 ## Important
 
 GitHub is the master copy of this repository. Pull before editing. The copy on the H: drive is a convenience mirror for offline use and must never be pushed over the top of this one.

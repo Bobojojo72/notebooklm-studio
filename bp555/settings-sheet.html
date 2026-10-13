@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>BP555 Settings Cheat Sheet</title>
+<meta name="description" content="A4 landscape cheat sheet: every setting an operator can change on the BP555, with the exact button sequence and a worked example.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Barlow:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,400..600,0..1,0&icon_names=arrow_forward,check,vertical_align_bottom,warning&display=block">
+<link rel="stylesheet" href="assets/bp555.css">
+<style>
+@page { size: A4 landscape; margin: 0; }
+.tiles { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+.tile { border: 1.5px solid var(--line); border-radius: 10px; padding: 12px 14px; display: grid; gap: 8px; align-content: start; }
+.tile h2 { font-size: 19px; }
+.tile p.res { font: 700 24px/1 var(--display); color: var(--ink); }
+.tile h2 .model { font-size: 11px; vertical-align: middle; }
+.tile .res small { font: 500 12px/1 var(--body); color: var(--muted); margin-left: 4px; }
+.tile p { color: var(--muted); font-size: 12.5px; }
+.tile .seq { font-size: 15px; }
+.tile.tint { background: var(--tint); border-color: transparent; }
+.tile.dark { background: #17212b; border-color: #17212b; color: #f1f4f7; grid-column: span 2; }
+.tile.dark h2 { color: #fff; }
+.tile.dark p { color: #b9c4cf; }
+.tile.dark .model { color: #b9c4cf; border-color: #3a4a5a; }
+.tile.dark ol.steps > li::before { background: #e0262b; color: #fff; }
+.tile.dark ol.steps { gap: 6px; font-size: 13px; }
+.rule { display: flex; gap: 14px; align-items: center; background: #fbbf16; color: #231f20; border-radius: 10px; padding: 10px 14px; font-weight: 600; }
+.rule .ms { font-size: 22px; }
+.wrap { display: grid; gap: 12px; align-content: start; }
+@media screen and (max-width: 1160px) { .tiles { grid-template-columns: repeat(2, 1fr); } }
+@media screen and (max-width: 600px) { .tiles { grid-template-columns: 1fr; } .tile.dark { grid-column: auto; } }
+</style>
+</head>
+<body>
+<div class="bar">
+  <a class="home" href="index.html">BP555 operator kit</a>
+  <div class="actions"><a class="btn pdf-link" href="pdf/bp555-settings-sheet.pdf">PDF</a></div>
+</div>
+
+<article class="sheet landscape">
+  <header class="sh">
+    <h1>BP555 settings cheat sheet</h1>
+    <p>Every setting an operator can change, with the exact buttons. Examples use the 24 inch button.</p>
+  </header>
+
+  <div class="wrap">
+    <p class="rule"><span class="ms" aria-hidden="true">warning</span>Press <kbd>+</kbd> <kbd>-</kbd> or <kbd>2x</kbd> first, then the length. The length button feeds the tape straight away.</p>
+    <div class="tiles">
+      <section class="tile"><h2>Set a length</h2><span class="seq"><kbd>24</kbd></span><p class="res">24 in</p><p>14 buttons, 6 to 45 in. Long models 12 to 90 in, metric 15 to 145 cm.</p></section>
+      <section class="tile"><h2>Half an inch longer</h2><span class="seq"><kbd>+</kbd><kbd>24</kbd></span><p class="res">24.5 in<small>+13 mm</small></p><p>Each press of <kbd>+</kbd> adds half an inch.</p></section>
+      <section class="tile"><h2>One inch longer</h2><span class="seq"><kbd>+</kbd><kbd>+</kbd><kbd>24</kbd></span><p class="res">25 in<small>+25 mm</small></p><p>Press <kbd>+</kbd> twice.</p></section>
+      <section class="tile"><h2>Shorter</h2><span class="seq"><kbd>-</kbd><kbd>24</kbd></span><p class="res">23.5 in<small>−13 mm</small></p><p>Twice, <span class="seq"><kbd>-</kbd><kbd>-</kbd><kbd>24</kbd></span>, gives 23 in.</p></section>
+      <section class="tile"><h2>Double</h2><span class="seq"><kbd>2x</kbd><kbd>24</kbd></span><p class="res">48 in</p><p>For cartons longer than the biggest button.</p></section>
+      <section class="tile"><h2>Double and add</h2><span class="seq"><kbd>+</kbd><kbd>+</kbd><kbd>+</kbd><kbd>2x</kbd><kbd>24</kbd></span><p class="res">49.5 in</p><p>Doubled first, then 1.5 in added.</p></section>
+      <section class="tile tint"><h2>Same again</h2><span class="seq"><kbd>REPEAT START</kbd></span><p>Feeds the last length again.</p></section>
+      <section class="tile tint"><h2>The one before</h2><span class="seq"><kbd>REPEAT 2 ENTER</kbd></span><p>Feeds the second-to-last length. <span class="model">Automatic models</span></p></section>
+      <section class="tile tint"><h2>Any length</h2><span class="seq"><kbd>Random</kbd></span><p>Hold it down. Tape feeds until you let go.</p></section>
+      <section class="tile tint"><h2>Heat and water</h2><p><strong>Heater Control Dial</strong>: OFF, five dots, MAX. Halfway is enough indoors.</p><p><strong>Water Level Slider</strong>: towards the machine for wetter tape.</p></section>
+      <section class="tile dark">
+        <h2>Automatic Mode <span class="model">Automatic models</span></h2>
+        <ol class="steps">
+          <li>Press <kbd>A</kbd>: beep, red light on.</li>
+          <li>Press a length and apply the tape, then <kbd>REPEAT 2 ENTER</kbd> to store it. Up to three lengths.</li>
+          <li>Press <kbd>REPEAT START</kbd>. Each piece feeds out when you tear off the last, on a loop.</li>
+        </ol>
+        <p>H pattern: store <kbd>24</kbd> <kbd>6</kbd> <kbd>6</kbd>. Press <kbd>A</kbd> or switch off to stop. Both clear the program.</p>
+      </section>
+    </div>
+  </div>
+
+  <footer class="sf">
+    <span>Source: Better Packages 555e User Manual, Rev 3.1</span>
+    <span>Supplied by Cotswold Packaging Group. Jo Lavene, 07930 404517</span>
+  </footer>
+</article>
+
+<script src="assets/bp555.js"></script>
+</body>
+</html>

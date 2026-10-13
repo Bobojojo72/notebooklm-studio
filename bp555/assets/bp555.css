@@ -1,0 +1,292 @@
+/* BP555 operator kit. Shared styles for the decks (16:9 boards) and the quick-reference cards (A4 sheets).
+   Layout idea: graphite neutrals so the machine's colour-coded keypad carries all the colour.
+   Keycaps are drawn from the manual's keypad (Figure 25) and reused inline in every instruction. */
+:root {
+  --bg: #e9edf1;
+  --sheet: #ffffff;
+  --ink: #17212b;
+  --muted: #56626e;
+  --line: #d3dae1;
+  --tint: #f2f5f8;
+  --accent: #23384f;
+  --accent-ink: #ffffff;
+  --warn: #8a4b00;
+  --warn-bg: #fff4dc;
+  --warn-line: #e8b54a;
+  --good: #1d6b3a;
+  --plate: #ffffff;
+  --focus: #0b63ce;
+
+  --display: "Barlow Condensed", "Arial Narrow", "Roboto Condensed", sans-serif;
+  --body: "Barlow", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Consolas, monospace;
+
+  --r: 10px;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0e1318; --sheet: #161e26; --ink: #e6ebf0; --muted: #9aa7b3; --line: #2b3742; --tint: #1c2630;
+    --accent: #c9d6e3; --accent-ink: #0e1318; --warn: #ffcf7a; --warn-bg: #2d2412; --warn-line: #7a5a1c;
+    --good: #7fd49c; --focus: #6cb0ff; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0e1318; --sheet: #161e26; --ink: #e6ebf0; --muted: #9aa7b3; --line: #2b3742; --tint: #1c2630;
+  --accent: #c9d6e3; --accent-ink: #0e1318; --warn: #ffcf7a; --warn-bg: #2d2412; --warn-line: #7a5a1c;
+  --good: #7fd49c; --focus: #6cb0ff; color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0; background: var(--bg); color: var(--ink);
+  font-family: var(--body); font-size: 16px; line-height: 1.45;
+  padding-inline: 16px; padding-block: 0 48px;
+}
+img { max-width: 100%; height: auto; display: block; }
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+h1, h2, h3 { font-family: var(--display); font-weight: 700; line-height: 1.02; letter-spacing: .005em; margin: 0; text-wrap: balance; }
+p { margin: 0; }
+.ms { font-family: "Material Symbols Outlined"; font-weight: 500; font-style: normal; font-size: 1.15em; line-height: 1; display: inline-block; vertical-align: -.2em; font-feature-settings: "liga"; -webkit-font-smoothing: antialiased; }
+
+/* ---------- top bar shared by every page ---------- */
+.bar {
+  max-width: 1280px; margin: 0 auto; padding-block: 18px 14px;
+  display: flex; flex-wrap: wrap; gap: 10px 20px; align-items: center; justify-content: space-between;
+}
+.bar a.home { font-family: var(--display); font-weight: 700; font-size: 20px; text-decoration: none; letter-spacing: .02em; }
+.bar .actions { display: flex; gap: 8px; flex-wrap: wrap; }
+.btn {
+  font: 600 15px/1 var(--body); border: 1.5px solid var(--ink); background: transparent; color: var(--ink);
+  padding: 9px 14px; border-radius: 999px; cursor: pointer; text-decoration: none; display: inline-flex; gap: 6px; align-items: center; white-space: nowrap;
+}
+.btn.solid { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+.btn:active { transform: translateY(1px); }
+
+/* ---------- keycaps (one source of colour, taken from the manual's Figure 25) ---------- */
+kbd, .k {
+  --kb: #565353; --kf: #ffffff;
+  display: inline-flex; align-items: center; justify-content: center; flex-direction: column;
+  min-width: 2.35em; height: 1.65em; padding: 0 .5em; border-radius: 999px;
+  background: var(--kb); color: var(--kf);
+  font: 700 1em/1 var(--display); letter-spacing: .02em; white-space: nowrap; vertical-align: middle;
+  box-shadow: inset 0 -2px 0 rgb(0 0 0 / .22), 0 0 0 1px rgb(0 0 0 / .18);
+}
+p kbd, dd kbd, li kbd, td kbd { font-size: .86em; height: 1.55em; }
+.big-key kbd { font-size: 1em; }
+.k-42 { --kb: #fbbf16; --kf: #231f20; }
+.k-39 { --kb: #b0690a; }
+.k-36 { --kb: #f78e43; --kf: #231f20; }
+.k-33 { --kb: #c4122e; }
+.k-30 { --kb: #c06ebe; --kf: #231f20; }
+.k-27 { --kb: #5057b0; }
+.k-24 { --kb: #5a8fd2; --kf: #231f20; }
+.k-21 { --kb: #1a64b7; }
+.k-18 { --kb: #2bb9cd; --kf: #231f20; }
+.k-15 { --kb: #19636a; }
+.k-12 { --kb: #6bc856; --kf: #231f20; }
+.k-9  { --kb: #252122; }
+.k-6  { --kb: #e7e6e6; --kf: #231f20; }
+.k-a  { --kb: #ffffff; --kf: #231f20; min-width: 1.65em; padding: 0; box-shadow: inset 0 0 0 2px #565353; }
+.k-rs { --kb: #e7e6e6; --kf: #231f20; }
+.k-rs, .k-r2 { height: 2.1em; min-width: 4.6em; border-radius: .9em; }
+.k-rs b, .k-r2 b { font-size: .78em; line-height: 1; }
+.k-rs small, .k-r2 small { font-size: .52em; letter-spacing: .08em; line-height: 1.15; }
+.k-rand .ms { font-size: 1.15em; }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+.seq { display: inline-flex; flex-wrap: wrap; gap: .3em; align-items: center; vertical-align: middle; }
+.seq .then { color: var(--muted); font-size: .8em; font-family: var(--body); }
+
+/* ---------- full keypad, laid out like the real one: two staggered columns ---------- */
+.keypad {
+  --u: 2.2em; font-size: 16px;
+  display: inline-grid; gap: .45em; padding: .9em .9em 1em; border-radius: 1.4em;
+  background: linear-gradient(#b9bec3, #a9aeb4); box-shadow: inset 0 1px 0 rgb(255 255 255 / .5), 0 8px 24px rgb(23 33 43 / .18);
+  width: max-content; max-width: 100%;
+}
+.keypad .kp-row, .keypad .kp-cols { display: grid; grid-template-columns: 1fr 1fr; gap: .45em .55em; align-items: center; }
+.keypad .kp-col { display: grid; gap: .45em; }
+.keypad .kp-col.left { padding-top: calc(var(--u) * .62); }
+.keypad .kp-cols { align-items: start; }
+.keypad .k { min-width: calc(var(--u) * 1.55); height: var(--u); font-size: 1.05em; position: relative; }
+.keypad .k-a { min-width: var(--u); width: var(--u); justify-self: start; margin-left: 1.1em; }
+.keypad .light { position: absolute; left: -1.05em; top: 50%; width: .62em; height: .62em; margin-top: -.31em; border-radius: 50%; background: #e9eaeb; box-shadow: inset 0 0 0 1.5px #565353; }
+.keypad.auto-on .light { background: #e0262b; box-shadow: 0 0 0 3px rgb(224 38 43 / .25); }
+.keypad .k-rs, .keypad .k-r2 { height: calc(var(--u) * 1.3); min-width: calc(var(--u) * 1.7); }
+.keypad .kp-bottom { margin-top: .35em; }
+.keypad .k-blank { visibility: hidden; }
+.keypad.dim .k:not(.on) { opacity: .28; filter: grayscale(.4); }
+.keypad .k.on { outline: 3px solid #17212b; outline-offset: 2px; }
+.keypad .badge {
+  position: absolute; right: -.7em; top: -.55em; min-width: 1.5em; height: 1.5em; padding: 0 .3em; border-radius: 999px;
+  background: #17212b; color: #fff; font: 700 .72em/1.5em var(--body); text-align: center; box-shadow: 0 0 0 2px #fff;
+}
+.keypad.standard .auto-only { visibility: hidden; }
+
+/* ---------- figures from the manual: always on a white plate so the line art reads in dark mode ---------- */
+.plate { background: var(--plate); border-radius: var(--r); padding: .8em; border: 1px solid var(--line); }
+.plate img { margin: 0 auto; }
+.cap { font-size: .72em; color: var(--muted); margin-top: .4em; }
+.plate .cap { color: #56626e; }
+
+/* ---------- notes ---------- */
+.warn { background: var(--warn-bg); border-left: 5px solid var(--warn-line); color: var(--ink); padding: .65em .9em; border-radius: 0 8px 8px 0; }
+.warn strong { color: var(--warn); }
+.note { background: var(--tint); padding: .65em .9em; border-radius: 8px; }
+.model { font: 500 .72em/1 var(--mono); letter-spacing: .02em; color: var(--muted); border: 1px solid var(--line); border-radius: 999px; padding: .3em .6em; white-space: nowrap; display: inline-block; }
+
+/* ================= DECKS ================= */
+.deck { max-width: 1280px; margin: 0 auto; display: grid; gap: 28px; }
+.slide {
+  container-type: inline-size; container-name: slide;
+  background: var(--sheet); border-radius: 14px; overflow: hidden;
+  box-shadow: 0 1px 0 var(--line), 0 10px 30px rgb(23 33 43 / .10);
+  aspect-ratio: 16 / 9; position: relative;
+}
+.s {
+  font-size: max(15px, 1.72cqw); height: 100%;
+  padding: 4.2cqw 5cqw 5.4cqw; display: grid; grid-template-rows: auto 1fr; gap: 2.2cqw;
+}
+.s > h2 { font-size: 2.35em; }
+.s .lede { font-size: 1.12em; color: var(--muted); max-width: 52ch; }
+.s-body { min-height: 0; display: grid; gap: 1.6em; align-content: start; }
+.cols { display: grid; grid-template-columns: 1fr 1fr; gap: 3cqw; align-items: start; min-height: 0; }
+.cols.fig-left { grid-template-columns: 1.05fr 1fr; }
+.cols.wide-right { grid-template-columns: .8fr 1.2fr; }
+.cols.three { grid-template-columns: repeat(3, 1fr); }
+.cols > * { min-width: 0; }
+.cols { min-height: auto; }
+.s-foot {
+  position: absolute; left: 5cqw; right: 5cqw; bottom: 1.8cqw; display: flex; justify-content: space-between; gap: 1em;
+  font-size: max(11px, 1.05cqw); color: var(--muted);
+}
+
+/* numbered steps: used only where the order matters */
+ol.steps { list-style: none; margin: 0; padding: 0; display: grid; gap: .6em; counter-reset: st; }
+ol.steps > li { counter-increment: st; position: relative; padding-left: 2.3em; min-height: 1.7em; }
+ol.steps > li::before {
+  content: counter(st); position: absolute; left: 0; top: -.05em; font: 700 .95em/1.75em var(--display); width: 1.75em; height: 1.75em; text-align: center;
+  border-radius: 50%; background: var(--accent); color: var(--accent-ink);
+}
+ol.steps li .seq { margin-top: .15em; }
+ul.ticks { list-style: none; margin: 0; padding: 0; display: grid; gap: .45em; }
+ul.ticks li { padding-left: 1.4em; position: relative; }
+ul.ticks li::before { content: ""; position: absolute; left: .2em; top: .55em; width: .5em; height: .5em; border-radius: 2px; background: var(--accent); }
+
+/* cover */
+.s.cover { grid-template-rows: 1fr; grid-template-columns: 1.1fr .9fr; align-items: center; gap: 4cqw; padding-bottom: 6cqw; }
+.cover h1 { font-size: 4.1em; }
+.cover .lede { margin-top: .8em; font-size: 1.2em; }
+.cover .who { margin-top: 2.2em; font-size: .9em; color: var(--muted); }
+.cover .who strong { color: var(--ink); }
+.cover img { width: 100%; filter: drop-shadow(0 18px 24px rgb(23 33 43 / .22)); }
+
+/* control spec rows inside a slide */
+dl.spec { margin: 0; display: grid; grid-template-columns: max-content 1fr; gap: .55em 1.2em; }
+dl.spec dt { font-family: var(--display); font-weight: 600; text-transform: uppercase; letter-spacing: .06em; font-size: .78em; color: var(--muted); padding-top: .2em; }
+dl.spec dd { margin: 0; }
+.big-key { font-size: 2.1em; }
+.vs { display: grid; grid-template-columns: 1fr 1fr; gap: 1em; }
+.vs > div { border: 1.5px solid var(--line); border-radius: var(--r); padding: .8em 1em; display: grid; gap: .35em; align-content: start; }
+.vs h3 { font-size: 1.15em; }
+
+/* examples table */
+.ex { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; }
+.ex th { text-align: left; font: 600 .78em/1.2 var(--display); text-transform: uppercase; letter-spacing: .06em; color: var(--muted); padding: 0 0 .5em; }
+.ex td { padding: .45em 0; vertical-align: middle; }
+.ex tr + tr td { border-top: 1px solid var(--line); }
+.ex td.res { font-family: var(--display); font-weight: 700; font-size: 1.25em; white-space: nowrap; }
+.ex td.res small { font-family: var(--body); font-weight: 500; font-size: .62em; color: var(--muted); margin-left: .3em; }
+
+.lookup { width: 100%; border-collapse: collapse; font-size: .82em; }
+.lookup td, .lookup th { padding: .38em .6em .38em 0; text-align: left; vertical-align: middle; }
+.lookup th { font: 600 .9em/1.2 var(--display); text-transform: uppercase; letter-spacing: .06em; color: var(--muted); }
+.lookup tbody tr:nth-child(odd) td { background: var(--tint); }
+.lookup td:first-child { padding-left: .6em; border-radius: 6px 0 0 6px; white-space: nowrap; }
+.lookup td:last-child { border-radius: 0 6px 6px 0; }
+
+@container slide (max-width: 760px) {
+  .s { padding: 22px 20px 52px; gap: 18px; }
+  .s > h2 { font-size: 1.9em; }
+  .cols, .cols.fig-left, .cols.wide-right, .cols.three, .vs { grid-template-columns: 1fr; }
+  .s.cover { grid-template-columns: 1fr; }
+  .cover h1 { font-size: 2.6em; }
+  .s-foot { left: 20px; right: 20px; bottom: 14px; }
+}
+@media screen and (max-width: 760px) {
+  .slide { aspect-ratio: auto; }
+  .keypad { font-size: 14px; }
+}
+
+/* present mode: one slide fills the screen, arrows to move */
+body.presenting { overflow: hidden; background: #0b0f13; }
+body.presenting .bar, body.presenting .slide:not(.current), body.presenting .deck-intro { display: none; }
+body.presenting .deck { position: fixed; inset: 0; place-content: center; max-width: none; z-index: 10; }
+body.presenting .slide.current { width: min(100vw, calc(100vh * 16 / 9)); border-radius: 0; aspect-ratio: 16 / 9; }
+.present-hint { position: fixed; bottom: calc(10px + env(safe-area-inset-bottom, 0px)); left: 50%; transform: translateX(-50%); z-index: 11; color: #c9d6e3; font-size: 13px; background: rgb(0 0 0 / .55); padding: 6px 12px; border-radius: 999px; display: none; }
+body.presenting .present-hint { display: block; }
+
+.deck-intro { max-width: 1280px; margin: 0 auto 18px; display: grid; gap: 6px; }
+.deck-intro h1 { font-size: clamp(30px, 5vw, 46px); }
+.deck-intro p { color: var(--muted); max-width: 70ch; }
+
+/* ================= A4 CARDS ================= */
+.sheet {
+  background: var(--sheet); margin: 0 auto; border-radius: 6px; box-shadow: 0 10px 30px rgb(23 33 43 / .12);
+  width: 794px; min-height: 1123px; padding: 34px 38px 30px; font-size: 13.5px; line-height: 1.38;
+  display: grid; grid-template-rows: auto 1fr auto; gap: 18px;
+}
+.sheet.landscape { width: 1123px; min-height: 794px; }
+.sheet header.sh { display: flex; justify-content: space-between; align-items: end; gap: 20px; border-bottom: 3px solid var(--ink); padding-bottom: 10px; }
+.sheet header.sh h1 { font-size: 40px; }
+.sheet header.sh p { color: var(--muted); max-width: 46ch; text-align: right; font-size: 12.5px; }
+.sheet footer.sf { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; font-size: 11px; color: var(--muted); border-top: 1px solid var(--line); padding-top: 8px; }
+.sheet h2 { font-size: 22px; }
+.sheet h3 { font-size: 17px; }
+.sheet kbd { font-size: 14px; }
+
+@media screen and (max-width: 1160px) { .sheet.landscape { width: 100%; min-height: 0; } }
+@media screen and (max-width: 830px) {
+  .sheet { width: 100%; min-height: 0; padding: 22px 18px; font-size: 15px; }
+  .sheet header.sh { flex-direction: column; align-items: start; }
+  .sheet header.sh p { text-align: left; }
+}
+
+/* ================= PRINT ================= */
+@media print {
+  :root, :root[data-theme="dark"] {
+    --bg: #fff; --sheet: #fff; --ink: #17212b; --muted: #56626e; --line: #d3dae1; --tint: #f2f5f8; --accent: #23384f; --accent-ink: #fff;
+    --warn: #8a4b00; --warn-bg: #fff4dc; --warn-line: #e8b54a; color-scheme: light;
+  }
+  * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  body { padding: 0; background: #fff; }
+  .bar, .deck-intro, .present-hint, .screen-only { display: none !important; }
+  .deck { display: block; max-width: none; }
+  .slide { width: 13.333in; height: 7.5in; aspect-ratio: auto; border-radius: 0; box-shadow: none; break-after: page; break-inside: avoid; }
+  .sheet { box-shadow: none; border-radius: 0; margin: 0; width: 210mm; height: 296.5mm; min-height: 0; overflow: hidden; }
+  .sheet.landscape { width: 297mm; height: 209.5mm; min-height: 0; }
+}
+
+/* figure height limits inside slides, so tall drawings never push a slide past 16:9 */
+.slide .keypad { font-size: max(11px, 1.24cqw); }
+.slide .plate img { max-height: 36cqw; width: auto; }
+.slide .plate.h30 img { max-height: 30cqw; }
+.slide .plate.h24 img { max-height: 24cqw; }
+.slide .plate.h20 img { max-height: 20cqw; }
+@container slide (max-width: 760px) { .slide .plate img, .slide .plate[class*="h"] img { max-height: none; width: 100%; } .slide .keypad { font-size: 13px; } }
+
+/* numbered pins on the product photo */
+.photo-map { position: relative; max-width: 100%; }
+.photo-map img { width: 100%; }
+.pin {
+  position: absolute; transform: translate(-50%, -50%); min-width: 1.7em; height: 1.7em; padding: 0 .35em; border-radius: 999px;
+  background: #17212b; color: #fff; font: 700 .85em/1.7em var(--body); text-align: center;
+  box-shadow: 0 0 0 3px #fff, 0 4px 10px rgb(0 0 0 / .3);
+}
+.pin.hot { background: #e0262b; }
+.keyset { display: grid; grid-template-columns: repeat(7, max-content); gap: .5em; font-size: 1.5em; }
+.slide .photo-map { max-width: 34cqw; }
+@container slide (max-width: 760px) { .slide .photo-map { max-width: 100%; } .keyset { grid-template-columns: repeat(4, max-content); } }

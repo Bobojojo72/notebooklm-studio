@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>BP555 Start Card</title>
+<meta name="description" content="A4 quick reference for running the BP555 from start to finish, with Automatic Mode and quick fixes on the side.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Barlow:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,400..600,0..1,0&icon_names=arrow_forward,check,vertical_align_bottom,warning&display=block">
+<link rel="stylesheet" href="assets/bp555.css">
+<style>
+@page { size: A4; margin: 0; }
+.sheet { font-size: 16.2px; }
+.flow { display: grid; grid-template-columns: 1.5fr 1fr; gap: 22px; align-items: start; }
+.flow ol.steps { gap: 11px; }
+.flow ol.steps > li { padding-left: 2.5em; }
+.flow ol.steps > li::before { font-size: 1.05em; }
+.flow ol.steps b { font-family: var(--display); font-size: 1.14em; letter-spacing: .01em; display: block; line-height: 1.1; }
+.flow ol.steps span.d { color: var(--muted); }
+.side { display: grid; gap: 14px; }
+.panel { border-radius: 10px; padding: 14px 16px; display: grid; gap: 9px; }
+.panel.auto { background: #17212b; color: #f1f4f7; }
+.panel.auto h2 { color: #fff; }
+.panel.auto ol.steps > li::before { background: #e0262b; color: #fff; }
+.panel.auto .d { color: #b9c4cf; }
+.panel.auto .model { color: #b9c4cf; border-color: #3a4a5a; }
+.panel.fix { border: 1.5px solid var(--line); }
+.panel dl.spec { gap: 6px 10px; font-size: .94em; }
+.panel h2 { font-size: 21px; }
+@media screen and (max-width: 830px) { .flow { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<div class="bar">
+  <a class="home" href="index.html">BP555 operator kit</a>
+  <div class="actions"><a class="btn pdf-link" href="pdf/bp555-start-card.pdf">PDF</a></div>
+</div>
+
+<article class="sheet">
+  <header class="sh">
+    <h1>BP555 start to finish</h1>
+    <p>Keep this by the machine. Better Pack 555e gummed tape dispenser.</p>
+  </header>
+
+  <div class="flow">
+    <ol class="steps">
+      <li><b>Fill the water bottle</b><span class="d">Room-temperature tap water. Cap on tight. Bottle on its shelf, cap around the post in the tank.</span></li>
+      <li><b>Fit the brush and tank</b><span class="d">Shortest bristles towards the machine, lying flat. Tank locked onto its shelf.</span></li>
+      <li><b>Set the Water Level Slider</b><span class="d">Towards the machine for wetter tape, away for drier.</span></li>
+      <li><b>Load the tape</b><span class="d">Square-cut end, under the upper tape plate and feed wheel, up to the blade. Close the lid.</span></li>
+      <li><b>Main Power Switch to I</b><span class="d">Wait for the beep. The machine is ready.</span></li>
+      <li><b>Set the Heater Control Dial</b><span class="d">OFF to MAX. Halfway is enough in a heated building.</span></li>
+      <li><b>Press a length</b><span class="d">Tape feeds out wet and cut, straight away.</span><span class="seq"><kbd>12</kbd><kbd>24</kbd><kbd>36</kbd></span></li>
+      <li><b>Adjust first, then the length</b><span class="d">Half an inch more, less, or double.</span><span class="seq"><kbd>+</kbd><kbd>24</kbd></span> <span class="d">= 24.5 in</span> &nbsp; <span class="seq"><kbd>2x</kbd><kbd>24</kbd></span> <span class="d">= 48 in</span></li>
+      <li><b>Repeat or feed by hand</b><span class="d"><kbd>REPEAT START</kbd> same length again. Hold <kbd>Random</kbd> for an odd length.</span></li>
+      <li><b>Check and seal</b><span class="d">Tape evenly wet and oily to the touch. Half on one flap, fold, smooth from the middle out and down the ends.</span></li>
+      <li><b>End of shift: Main Power Switch to O</b><span class="d">This also clears Automatic Mode. Let the heater cool 30 minutes before touching it.</span></li>
+    </ol>
+
+    <div class="side">
+      <section class="panel auto">
+        <h2>Automatic Mode</h2>
+        <p class="d">Next piece feeds out as soon as you tear one off. Up to three lengths, on a loop. <span class="model">Automatic models</span></p>
+        <ol class="steps">
+          <li>Press <kbd>A</kbd>. Beep, red light on.</li>
+          <li>Press a length, e.g. <kbd>24</kbd>. Apply it.</li>
+          <li>Press <kbd>REPEAT 2 ENTER</kbd> to store it.</li>
+          <li>Repeat steps 2 and 3 for up to three lengths.</li>
+          <li>Press <kbd>REPEAT START</kbd> to run.</li>
+        </ol>
+        <p class="d">H pattern: store <kbd>24</kbd> <kbd>6</kbd> <kbd>6</kbd>. Turn off with <kbd>A</kbd>. That clears the program.</p>
+      </section>
+
+      <section class="panel fix">
+        <h2>Quick fixes</h2>
+        <dl class="spec">
+          <dt>No tape</dt><dd>Plugged in? Switch on <strong>I</strong>? Lid fully closed and square?</dd>
+          <dt>Dry tape</dt><dd>Slider towards the machine, refill the bottle, wash the brush.</dd>
+          <dt>Jams</dt><dd>Upper tape plate in place, tape path clean and dry.</dd>
+          <dt>Wrong length</dt><dd>Every piece off? Feed wheel needs adjusting: call maintenance.</dd>
+        </dl>
+      </section>
+
+      <p class="warn"><strong>Hot heater.</strong> Hold it only by the grip tabs. Sharp blade: cut-resistant gloves.</p>
+    </div>
+  </div>
+
+  <footer class="sf">
+    <span>Source: Better Packages 555e User Manual, Rev 3.1</span>
+    <span>Supplied by Cotswold Packaging Group. Jo Lavene, 07930 404517</span>
+  </footer>
+</article>
+
+<script src="assets/bp555.js"></script>
+</body>
+</html>

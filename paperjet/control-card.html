@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Barlow:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500&display=swap">
+<link rel="stylesheet" href="assets/paperjet.css">
+<title>PaperJet Control Map</title>
+<meta name="description" content="A4 map of the PaperJet hand control panel: the five modes, display, Esc, knob and hand button, plus the controls on the machine.">
+<style>
+@page { size: A4; margin: 0; }
+.sheet { font-size: 15.8px; }
+.grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: start; }
+.grid2 > section { display: grid; gap: 9px; align-content: start; }
+.sheet ol.steps { gap: 9px; }
+.sheet ol.steps b { font-family: var(--display); font-size: 1.1em; }
+.sheet .d { color: var(--muted); }
+.dark { background: #17212b; color: #f1f4f7; border-radius: 10px; padding: 14px 16px; display: grid; gap: 9px; }
+.dark h2 { color: #fff; } .dark .d { color: #b9c4cf; }
+.dark ol.steps > li::before { background: var(--jet); color: var(--jet-ink); }
+@media screen and (max-width: 830px) { .grid2 { grid-template-columns: 1fr; } }
+.mapwrap { display: grid; grid-template-columns: auto 1fr; gap: 24px; align-items: start; }
+.mapwrap .panel-pj { font-size: 17px; }
+@media screen and (max-width: 830px) { .mapwrap { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<div class="bar">
+  <a class="home" href="index.html">PaperJet operator kit</a>
+  <div class="actions"><a class="btn pdf-link" href="pdf/paperjet-control-map.pdf">PDF</a></div>
+</div>
+<article class="sheet">
+  <header class="sh">
+    <h1><span>PaperJet</span> control map</h1>
+    <p>Every control on the hand control panel and the machine. Panel drawn after the manual, Fig. 64.</p>
+  </header>
+  <div style="display:grid; gap:20px; align-content:start">
+    <div class="mapwrap">
+      <div class="panel-pj" data-badges="1:1 2:2 3:3 4:4 5:5 display:6 esc:7 knob:8 hand:9"></div>
+      <dl class="spec">
+        <dt>1 Length</dt><dd>One pad of a set length, every press.</dd>
+        <dt>2 Removal</dt><dd>A new pad as soon as the last is taken. Light blinks while on.</dd>
+        <dt>3 Manual</dt><dd>Paper runs while you hold. Let go to cut.</dd>
+        <dt>4 Series</dt><dd>Up to three lengths, each with a count, from one press.</dd>
+        <dt>5 Preset</dt><dd>Keys 1 to 3 each store a length and count.</dd>
+        <dt>6 Display</dt><dd>Mode, settings and messages. <strong>Service</strong> means a service is due.</dd>
+        <dt>7 Esc</dt><dd>Cancel in any mode. Ends Removal and Series.</dd>
+        <dt>8 Knob</dt><dd>Turn and push. Chooses modes, sets values.</dd>
+        <dt>9 Hand button</dt><dd>Starts production. Same as the foot switch.</dd>
+      </dl>
+    </div>
+    <div class="grid2">
+      <section>
+        <h2>Setting a value with the knob</h2>
+        <ol class="steps">
+          <li><b>Push</b> the knob. The value blinks.</li>
+          <li><b>Turn</b>: slow for ones, faster for tens, fast for hundreds.</li>
+          <li><b>Push</b> to confirm. The next value blinks.</li>
+          <li>Last value confirmed: ready to run.</li>
+        </ol>
+        <p class="callout"><strong>Hold the knob 1 second</strong> after a Manual pad to copy its length into Length or Removal mode.</p>
+      </section>
+      <section>
+        <h2>On the machine</h2>
+        <dl class="spec">
+          <dt>Rocker switch</dt><dd>On and off, next to the power socket.</dd>
+          <dt>Manual feed</dt><dd>Slow feed for loading paper. Stops when released.</dd>
+          <dt>Foot switch</dt><dd>Press to start, release to stop. Same as the hand button.</dd>
+          <dt>Emergency stop</dt><dd>Red button. Stops everything. Pull out to reset.</dd>
+        </dl>
+        <h2>Messages</h2>
+        <dl class="spec">
+          <dt>Paper build-up</dt><dd>Clear the paper inside.</dd>
+          <dt>Remove paper</dt><dd>Clear the cutter, confirm with the knob.</dd>
+          <dt>Power fault</dt><dd>Off for 10 seconds, back on.</dd>
+        </dl>
+      </section>
+    </div>
+  </div>
+  <footer class="sf">
+    <span>Source: Sprick PaperJet operating manual, version 3.4</span>
+    <span>Supplied by Cotswold Packaging Group. Jo Lavene, 07930 404517</span>
+  </footer>
+</article>
+<script src="assets/paperjet.js"></script>
+</body>
+</html>

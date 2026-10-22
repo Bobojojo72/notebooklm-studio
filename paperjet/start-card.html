@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Barlow:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500&display=swap">
+<link rel="stylesheet" href="assets/paperjet.css">
+<title>PaperJet Start Card</title>
+<meta name="description" content="A4 quick reference for the Sprick PaperJet: switch on, load paper, choose a mode, make pads, switch off.">
+<style>
+@page { size: A4; margin: 0; }
+.sheet { font-size: 15.8px; }
+.grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: start; }
+.grid2 > section { display: grid; gap: 9px; align-content: start; }
+.sheet ol.steps { gap: 9px; }
+.sheet ol.steps b { font-family: var(--display); font-size: 1.1em; }
+.sheet .d { color: var(--muted); }
+.dark { background: #17212b; color: #f1f4f7; border-radius: 10px; padding: 14px 16px; display: grid; gap: 9px; }
+.dark h2 { color: #fff; } .dark .d { color: #b9c4cf; }
+.dark ol.steps > li::before { background: var(--jet); color: var(--jet-ink); }
+@media screen and (max-width: 830px) { .grid2 { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<div class="bar">
+  <a class="home" href="index.html">PaperJet operator kit</a>
+  <div class="actions"><a class="btn pdf-link" href="pdf/paperjet-start-card.pdf">PDF</a></div>
+</div>
+<article class="sheet">
+  <header class="sh">
+    <h1><span>PaperJet</span> start to finish</h1>
+    <p>Keep this by the machine. Sprick PaperJet paper cushioning system.</p>
+  </header>
+  <div class="grid2">
+    <section>
+      <h2>Switch on</h2>
+      <ol class="steps">
+        <li><b>Plug in</b><span class="d"> Foot switch and hand control panel into the machine, then power lead to the wall.</span></li>
+        <li><b>Emergency stop out</b><span class="d"> Pull the red button out if it is pressed in.</span></li>
+        <li><b>Rocker switch on</b><span class="d"> The display lights up.</span></li>
+      </ol>
+      <h2>Load paper <span class="model">switch off first</span></h2>
+      <ol class="steps">
+        <li><b>Roll:</b><span class="d"> push into the roll seat, swing the roll lock in front, knob clicks in.</span><br><b>ComPackt:</b><span class="d"> stack on its shelf, cut and remove the bands.</span></li>
+        <li><b>Open the paper guide cover</b><span class="d"> Catches both sides, lift until the support pin holds it.</span></li>
+        <li><b>Roll only:</b><span class="d"> push the dancer arm to release the brake, paper under the arm with a loose loop.</span></li>
+        <li><b>Between the deflector rollers</b></li>
+        <li><b>Triangle round the paper guide</b><span class="d"> Push in until the gear wheel grips.</span></li>
+        <li><b>Close up</b><span class="d"> Release the support pin, close the cover and catches.</span></li>
+        <li><b>Switch on, hold manual feed</b><span class="d"> until a closed pad appears at the outlet.</span></li>
+      </ol>
+      <p class="warn"><strong>No gloves, tie hair back.</strong> Two people for a 27 kg roll or 24 kg stack.</p>
+    </section>
+    <section>
+      <div class="dark">
+        <h2>Make pads</h2>
+        <ol class="steps">
+          <li>Choose a mode, 1 to 5.</li>
+          <li>Knob: <b>push</b> to pick a value, <b>turn</b> to change it, <b>push</b> to confirm.</li>
+          <li>Press the <b>foot switch</b> or <b>hand button</b>.</li>
+        </ol>
+      </div>
+      <dl class="spec">
+        <dt>1 Length</dt><dd>Same length every press. 30 to 1015 cm.</dd>
+        <dt>2 Removal</dt><dd>Next pad made as you take one. <kbd>Esc</kbd> before the last pad.</dd>
+        <dt>3 Manual</dt><dd>Runs while held, cuts on release. Hold the knob 1 s to save the length.</dd>
+        <dt>4 Series</dt><dd>Up to 3 lengths and counts, one press. <kbd>Esc</kbd> ends it.</dd>
+        <dt>5 Preset</dt><dd>Keys 1, 2, 3 each store a length and count.</dd>
+      </dl>
+      <h2>Quick fixes</h2>
+      <dl class="spec">
+        <dt>Dark display</dt><dd>Plugged in? E-stop out? Hood closed? Switched on?</dd>
+        <dt>Light flashes</dt><dd>Paper chute flap open. Close it.</dd>
+        <dt>Paper tears</dt><dd>Lock the roll. Blow the roll brake clean.</dd>
+        <dt>Jam</dt><dd>Off and unplug. See the maintenance card.</dd>
+      </dl>
+      <h2>End of shift</h2>
+      <p>Rocker switch off. Weekly: unplug and clear paper scraps from under the service panels.</p>
+      <p class="warn"><strong>Emergency stop</strong> stops everything. Keep it in reach. Not for clearing messages.</p>
+    </section>
+  </div>
+  <footer class="sf">
+    <span>Source: Sprick PaperJet operating manual, version 3.4</span>
+    <span>Supplied by Cotswold Packaging Group. Jo Lavene, 07930 404517</span>
+  </footer>
+</article>
+<script src="assets/paperjet.js"></script>
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Barlow:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500&display=swap">
+<link rel="stylesheet" href="assets/paperjet.css">
+<title>PaperJet Maintenance Card</title>
+<meta name="description" content="A4 maintenance card for the PaperJet: pre-shift checks, weekly cleaning, opening the machine and clearing a paper jam with the special tool.">
+<style>
+@page { size: A4; margin: 0; }
+.sheet { font-size: 15.8px; }
+.grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: start; }
+.grid2 > section { display: grid; gap: 9px; align-content: start; }
+.sheet ol.steps { gap: 9px; }
+.sheet ol.steps b { font-family: var(--display); font-size: 1.1em; }
+.sheet .d { color: var(--muted); }
+.dark { background: #17212b; color: #f1f4f7; border-radius: 10px; padding: 14px 16px; display: grid; gap: 9px; }
+.dark h2 { color: #fff; } .dark .d { color: #b9c4cf; }
+.dark ol.steps > li::before { background: var(--jet); color: var(--jet-ink); }
+@media screen and (max-width: 830px) { .grid2 { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<div class="bar">
+  <a class="home" href="index.html">PaperJet operator kit</a>
+  <div class="actions"><a class="btn pdf-link" href="pdf/paperjet-maintenance-card.pdf">PDF</a></div>
+</div>
+<article class="sheet">
+  <header class="sh">
+    <h1><span>PaperJet</span> care and jams</h1>
+    <p>Checks, cleaning and clearing a jam with the special tool (spanner) supplied.</p>
+  </header>
+  <div style="display:grid; gap:16px; align-content:start">
+    <p class="warn"><strong>Switch off and unplug</strong> before any cleaning or jam clearing. Keep the plug where nobody can put it back in.</p>
+    <div class="grid2">
+      <section>
+        <div class="dark">
+          <h2>Clear a paper jam</h2>
+          <ol class="steps">
+            <li>Switch off and unplug.</li>
+            <li>Open the <b>service hood</b>.</li>
+            <li>Undo both <b>hand screws</b>, tip them aside towards the pivot shaft.</li>
+            <li>Open the <b>embossing shaft cover</b>, pull out the paper.</li>
+            <li>Turn the knife shaft with the <b>special tool</b> until every scrap is out.</li>
+            <li>Close the embossing shaft cover and the service hood.</li>
+            <li>Plug in, switch on.</li>
+            <li><b>Remove paper</b> message: check, then push the knob.</li>
+            <li><b>Paper removed</b>: push the knob. The knife resets itself.</li>
+          </ol>
+        </div>
+        <h2>Every shift</h2>
+        <ul class="ticks">
+          <li>Plugs fully home</li>
+          <li>Hood and paper guide cover stop the machine when opened</li>
+          <li>Emergency stop works</li>
+          <li>No paper build-up, dirt or torn paper</li>
+          <li>No loose screws on the service panels</li>
+        </ul>
+      </section>
+      <section>
+        <h2>Weekly clean</h2>
+        <ol class="steps">
+          <li>Switch off and unplug.</li>
+          <li>Open the <b>service panels</b> underneath.</li>
+          <li>Blow or wipe out paper dust and scraps. Build-up is a fire risk.</li>
+          <li>Close the panels. Never run with them open.</li>
+          <li>Check cables for loose plugs, rubbing or damage.</li>
+        </ol>
+        <dl class="spec">
+          <dt>Use</dt><dd>Compressed air, lint-free cloths, isopropanol.</dd>
+          <dt>Never</dt><dd>Abrasive cleaners or lots of water.</dd>
+        </dl>
+        <h2>Faults</h2>
+        <dl class="spec">
+          <dt>Dark display</dt><dd>Power, E-stop, hood. Overheated: off 5 to 10 min.</dd>
+          <dt>Stops mid-run</dt><dd>Too hot. Off 10 min, clean thoroughly.</dd>
+          <dt>Paper tears</dt><dd>Lock the roll, blow the roll brake clean.</dd>
+          <dt>Pads open</dt><dd>Tighten the star screws on the rotary shaft.</dd>
+          <dt>Light flashes</dt><dd>Close the paper chute flap.</dd>
+        </dl>
+        <p class="callout"><strong>Service</strong> on the display: book a Sprick-trained service, about every 500 rolls or 300 ComPackt stacks. Knife shaft guard is checked every six months.</p>
+      </section>
+    </div>
+  </div>
+  <footer class="sf">
+    <span>Source: Sprick PaperJet operating manual, version 3.4</span>
+    <span>Supplied by Cotswold Packaging Group. Jo Lavene, 07930 404517</span>
+  </footer>
+</article>
+<script src="assets/paperjet.js"></script>
+</body>
+</html>

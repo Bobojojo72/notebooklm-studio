@@ -34,17 +34,18 @@
 <article class="sheet">
   <header class="sh">
     <h1><span>PaperJet</span> control map</h1>
-    <p>Every control on the hand control panel and the machine. Panel drawn after the manual, Fig. 64.</p>
+    <p>Every control on the hand control panel and the machine. Drawn from the manual, Fig. 64, and the real panel.</p>
   </header>
   <div style="display:grid; gap:20px; align-content:start">
     <div class="mapwrap">
-      <div class="panel-pj" data-badges="1:1 2:2 3:3 4:4 5:5 display:6 esc:7 knob:8 hand:9"></div>
+      <div style="display:grid;gap:10px;justify-items:start"><div class="panel-pj" data-badges="1:1 2:2 3:3 4:4 5:5 display:6 esc:7 knob:8 hand:9 k1:5"></div><div class="photo" style="width:250px"><img src="img/panel-photo.jpg" alt="Photo of the real PaperJet hand control panel"></div><p class="cap">Real panel, Sprick photo.</p></div>
       <dl class="spec">
+        <dt>Mode lights</dt><dd>Five yellow lights along the top. Turn the knob to move between them.</dd>
         <dt>1 Length</dt><dd>One pad of a set length, every press.</dd>
         <dt>2 Removal</dt><dd>A new pad as soon as the last is taken. Light blinks while on.</dd>
         <dt>3 Manual</dt><dd>Paper runs while you hold. Let go to cut.</dd>
         <dt>4 Series</dt><dd>Up to three lengths, each with a count, from one press.</dd>
-        <dt>5 Preset</dt><dd>Keys 1 to 3 each store a length and count.</dd>
+        <dt>5 Preset</dt><dd>Keys 1, 2, 3 down the right each store a length and count.</dd>
         <dt>6 Display</dt><dd>Mode, settings and messages. <strong>Service</strong> means a service is due.</dd>
         <dt>7 Esc</dt><dd>Cancel in any mode. Ends Removal and Series.</dd>
         <dt>8 Knob</dt><dd>Turn and push. Chooses modes, sets values.</dd>
@@ -55,6 +56,7 @@
       <section>
         <h2>Setting a value with the knob</h2>
         <ol class="steps">
+          <li><b>Turn</b> to choose the mode. Its light comes on.</li>
           <li><b>Push</b> the knob. The value blinks.</li>
           <li><b>Turn</b>: slow for ones, faster for tens, fast for hundreds.</li>
           <li><b>Push</b> to confirm. The next value blinks.</li>

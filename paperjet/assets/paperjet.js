@@ -3,13 +3,11 @@
 (function () {
   'use strict';
 
-  // Hand control panel, laid out as in the manual (Fig. 64): five mode keys above the display,
-  // then Esc, the turn/push knob and the hand button. data-on="1 knob" highlights parts,
+  // Hand control panel, laid out as on the real unit (manual Fig. 64 and Sprick's product photos):
+  // five mode lights across the top, display, preset keys 1 to 3 down the right, Esc bottom left,
+  // the turn/push knob and the lit hand button. data-on="1 knob" highlights parts,
   // data-badges="1:1 knob:2" puts step numbers on them.
-  var PARTS = [
-    ['1', 'Length', 'mode'], ['2', 'Removal', 'mode'], ['3', 'Manual', 'mode'],
-    ['4', 'Series', 'mode'], ['5', 'Preset 1–3', 'mode']
-  ];
+  var MODES = [['1', 'Length'], ['2', 'Removal'], ['3', 'Manual'], ['4', 'Series'], ['5', 'Preset']];
   function buildPanel(host) {
     var on = (host.getAttribute('data-on') || '').split(/\s+/).filter(Boolean);
     var badges = {};
@@ -18,18 +16,22 @@
       badges[pair.slice(0, i)] = pair.slice(i + 1);
     });
     if (on.length) host.classList.add('dim');
+    var lit = host.getAttribute('data-lit') || (on.filter(function (o) { return /^[1-5]$/.test(o); })[0]) || '1';
     function part(id, cls, inner) {
       var b = badges[id] ? '<span class="badge">' + badges[id] + '</span>' : '';
-      return '<span class="pp ' + cls + (on.indexOf(id) !== -1 ? ' on' : '') + '" data-part="' + id + '">' + inner + b + '</span>';
+      return '<span class="pp ' + cls + (on.indexOf(id) !== -1 ? ' on' : '') + '">' + inner + b + '</span>';
     }
-    var modes = PARTS.map(function (p) {
-      return part(p[0], 'pp-mode', '<span class="led" aria-hidden="true"></span><b>' + p[0] + '</b><small>' + p[1] + '</small>');
+    var modes = MODES.map(function (m) {
+      return part(m[0], 'pp-mode' + (m[0] === lit ? ' lit' : ''), '<span class="led" aria-hidden="true"></span><small>' + m[0] + ' ' + m[1] + '</small>');
     }).join('');
     host.innerHTML =
       '<div class="pp-modes">' + modes + '</div>' +
-      part('display', 'pp-display', '<span class="lcd">' + (host.getAttribute('data-screen') || 'Length&nbsp;&nbsp;120 cm') + '</span>') +
+      '<div class="pp-mid">' +
+        part('display', 'pp-display', '<span class="lcd">' + (host.getAttribute('data-screen') || 'Length&nbsp;&nbsp;120 cm') + '</span>') +
+        '<div class="pp-keys">' + ['k1', 'k2', 'k3'].map(function (k, i) { return part(k, 'pp-key', '<i>' + (i + 1) + '</i>'); }).join('') + '</div>' +
+      '</div>' +
       '<div class="pp-controls">' +
-        part('esc', 'pp-esc', 'Esc') +
+        part('esc', 'pp-esc', '<i>Esc</i>') +
         part('knob', 'pp-knob', '<span class="dial" aria-hidden="true"></span><small>Turn / push</small>') +
         part('hand', 'pp-hand', '<span class="go" aria-hidden="true"></span><small>Hand button</small>') +
       '</div>';

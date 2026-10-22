@@ -251,33 +251,41 @@ kbd { --kb: #2a333c; --kf: #fff; min-width: 0; padding: 0 .65em; font-family: va
 kbd.y { --kb: var(--jet); --kf: var(--jet-ink); }
 kbd.red { --kb: #c4122e; }
 
-/* hand control panel diagram (layout after manual Fig. 64; not a photo) */
+/* hand control panel diagram, drawn from the real unit: light grey box, mode lights across the top */
 .panel-pj {
-  font-size: 16px; display: inline-grid; gap: .8em; padding: 1em; border-radius: 1.1em; width: 22em; max-width: 100%;
-  background: linear-gradient(#3a434c, #2a323a); color: #e9eef2;
-  box-shadow: inset 0 1px 0 rgb(255 255 255 / .12), 0 10px 26px rgb(23 33 43 / .25);
+  font-size: 16px; display: inline-grid; gap: .75em; padding: .9em 1em 1em; border-radius: .9em; width: 22em; max-width: 100%;
+  background: linear-gradient(#eef1f3, #d5dade); color: #2a333c; border: 1px solid #b9c0c6;
+  box-shadow: inset 0 1px 0 #fff, 0 10px 26px rgb(23 33 43 / .2);
 }
 .panel-pj .pp { position: relative; }
-.pp-modes { display: grid; grid-template-columns: repeat(5, 1fr); gap: .4em; }
-.pp-mode { display: grid; justify-items: center; gap: .15em; padding: .45em .15em .4em; border-radius: .55em; background: #4a545e; box-shadow: inset 0 -2px 0 rgb(0 0 0 / .3); text-align: center; }
-.pp-mode b { font: 700 1.2em/1 var(--display); }
-.pp-mode small { font-size: .6em; line-height: 1.1; color: #c9d3dc; }
-.pp-mode .led { width: .45em; height: .45em; border-radius: 50%; background: #69737d; }
-.pp-display { display: block; border-radius: .45em; padding: .55em .7em; background: #b9d3a8; box-shadow: inset 0 2px 5px rgb(0 0 0 / .35); }
+.pp-modes { display: grid; grid-template-columns: repeat(5, 1fr); gap: .3em; }
+.pp-mode { display: grid; justify-items: center; gap: .25em; padding: .2em 0; border-radius: .4em; text-align: center; }
+.pp-mode small { font-size: .6em; line-height: 1.1; color: #3e4852; font-weight: 600; }
+.pp-mode .led { width: .7em; height: .7em; border-radius: 50%; background: #d9cf9a; box-shadow: inset 0 0 0 1px #a99c55; }
+.pp-mode.lit .led { background: #ffd21f; box-shadow: 0 0 0 3px rgb(255 210 31 / .35), inset 0 0 0 1px #b38f00; }
+.pp-mid { display: grid; grid-template-columns: 1fr auto; gap: .7em; align-items: center; }
+.pp-display { display: block; border-radius: .35em; padding: .6em .7em; background: #b7d36a; box-shadow: inset 0 2px 5px rgb(0 0 0 / .35), 0 0 0 3px #6c757d; }
 .pp-display .lcd { font: 500 1em/1.2 var(--mono); color: #1d2a17; white-space: nowrap; }
+.pp-keys { display: grid; gap: .35em; }
+.pp-key, .pp-esc { display: grid; place-items: center; width: 1.9em; height: 1.9em; border-radius: 50%; background: radial-gradient(circle at 40% 35%, #c3cad0, #8c959d); box-shadow: 0 2px 3px rgb(0 0 0 / .35); }
+.pp-key i, .pp-esc i { font: 700 .72em/1 var(--body); font-style: normal; color: #17212b; }
 .pp-controls { display: grid; grid-template-columns: 1fr 1.2fr 1.2fr; gap: .6em; align-items: center; justify-items: center; }
-.pp-esc { font: 700 .95em/1 var(--body); background: #4a545e; padding: .75em .9em; border-radius: .55em; box-shadow: inset 0 -2px 0 rgb(0 0 0 / .3); }
+.pp-esc { width: 2.4em; height: 2.4em; }
 .pp-knob, .pp-hand { display: grid; justify-items: center; gap: .3em; }
-.pp-knob small, .pp-hand small { font-size: .62em; color: #c9d3dc; }
-.pp-knob .dial { width: 3em; height: 3em; border-radius: 50%; background: radial-gradient(circle at 35% 30%, #8d98a2, #3a434c 70%); box-shadow: 0 3px 8px rgb(0 0 0 / .4), inset 0 0 0 3px #59636d; position: relative; }
-.pp-knob .dial::after { content: ""; position: absolute; left: 50%; top: .3em; width: .2em; height: .8em; margin-left: -.1em; border-radius: 2px; background: #e9eef2; }
-.pp-hand .go { width: 2.6em; height: 2.6em; border-radius: 50%; background: radial-gradient(circle at 35% 30%, #7fd49c, #1d6b3a 72%); box-shadow: 0 3px 8px rgb(0 0 0 / .4); }
-.panel-pj.dim .pp:not(.on) { opacity: .3; }
-.panel-pj .pp.on { outline: 3px solid var(--jet); outline-offset: 3px; border-radius: .6em; }
+.pp-knob small, .pp-hand small { font-size: .62em; color: #3e4852; font-weight: 600; }
+.pp-knob .dial { width: 2.9em; height: 2.9em; border-radius: 50%; background: radial-gradient(circle at 35% 30%, #59616a, #15191d 70%); box-shadow: 0 3px 8px rgb(0 0 0 / .45); position: relative; }
+.pp-knob .dial::after { content: ""; position: absolute; left: 50%; top: .3em; width: .18em; height: .75em; margin-left: -.09em; border-radius: 2px; background: #d5dade; }
+.pp-hand .go { width: 2.5em; height: 2.5em; border-radius: 50%; background: radial-gradient(circle at 38% 32%, #ff8a8a, #c4122e 62%, #6f0a19); box-shadow: 0 0 0 .3em #2a333c, 0 3px 8px rgb(0 0 0 / .4); }
+.panel-pj.dim .pp:not(.on) { opacity: .35; }
+.panel-pj .pp.on { outline: 3px solid #17212b; outline-offset: 3px; border-radius: .6em; }
+.panel-pj .pp-key.on, .panel-pj .pp-esc.on { border-radius: 50%; }
 .panel-pj .badge {
-  position: absolute; right: -.55em; top: -.6em; min-width: 1.5em; height: 1.5em; padding: 0 .3em; border-radius: 999px; z-index: 1;
-  background: var(--jet); color: var(--jet-ink); font: 700 .75em/1.5em var(--body); text-align: center; box-shadow: 0 0 0 2px #2a323a;
+  position: absolute; right: -.7em; top: -.7em; min-width: 1.5em; height: 1.5em; padding: 0 .3em; border-radius: 999px; z-index: 1;
+  background: #17212b; color: #ffd21f; font: 700 .72em/1.5em var(--body); text-align: center; box-shadow: 0 0 0 2px #fff;
 }
+.photo { border-radius: var(--r); overflow: hidden; background: #fff; }
+.photo img { width: 100%; height: 100%; object-fit: cover; }
+.slide .photo img { max-height: 30cqw; object-fit: contain; }
 .slide .panel-pj { font-size: max(11px, 1.45cqw); }
 @container slide (max-width: 760px) { .slide .panel-pj { font-size: 14px; } }
 
@@ -292,3 +300,4 @@ table.faults { width: 100%; border-collapse: collapse; font-size: .78em; }
 table.faults th { text-align: left; font: 600 .9em/1.2 var(--display); text-transform: uppercase; letter-spacing: .06em; color: var(--muted); padding: 0 .6em .4em 0; }
 table.faults td { padding: .4em .6em .4em 0; vertical-align: top; border-top: 1px solid var(--line); }
 table.faults td:first-child { font-weight: 600; }
+.slide .cols.three .photo img { max-height: 21cqw; }

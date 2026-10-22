@@ -23,6 +23,8 @@
 .items { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 18px; }
 .item { display: grid; gap: 8px; align-content: start; border: 1.5px solid var(--line); border-radius: var(--r); padding: 18px; background: var(--sheet); }
 .item.lead { border-color: var(--jet); border-width: 2px; }
+.item a.thumb { display: block; border-radius: 8px; overflow: hidden; border: 1px solid var(--line); background: #fff; }
+.item a.thumb img { width: 100%; }
 .item h3 { font-size: 24px; }
 .item h3 a { text-decoration: none; }
 .item h3 a:hover { text-decoration: underline; text-underline-offset: 3px; }
@@ -53,24 +55,28 @@ footer.hubf { max-width: 1180px; margin: 0 auto; padding-top: 28px; color: var(-
 
   <section class="group" aria-labelledby="kit-h">
     <h2 id="kit-h">The kit</h2>
-    <p>Open the guide and press Present to show it full screen. Print the cards and keep them by the machine.</p>
+    <p>Open the guide and press Present to show it full screen. Use the PDF buttons to download, email or print. Print the cards and keep them by the machine.</p>
     <div class="items">
       <article class="item lead">
+        <a class="thumb" href="guide.html"><img src="img/thumbs/operator-guide.jpg" alt="First slide of the operator guide" loading="lazy"></a>
         <h3><a href="guide.html">Operator guide</a></h3>
         <p>Start to finish: set-up, loading a roll or ComPackt, every mode on the control panel, opening the machine, jams, cleaning and faults.</p>
         <div class="meta"><span class="model">23 slides</span><a class="btn pdf-link" href="pdf/paperjet-operator-guide.pdf">PDF</a></div>
       </article>
       <article class="item">
+        <a class="thumb" href="start-card.html"><img src="img/thumbs/start-card.jpg" alt="Start card" loading="lazy"></a>
         <h3><a href="start-card.html">Start card</a></h3>
         <p>Switch on, load paper, make pads, quick fixes. One A4 sheet.</p>
         <div class="meta"><span class="model">A4</span><a class="btn pdf-link" href="pdf/paperjet-start-card.pdf">PDF</a></div>
       </article>
       <article class="item">
+        <a class="thumb" href="control-card.html"><img src="img/thumbs/control-map.jpg" alt="Control map card" loading="lazy"></a>
         <h3><a href="control-card.html">Control map</a></h3>
         <p>Every button, the knob and the display messages on one page.</p>
         <div class="meta"><span class="model">A4</span><a class="btn pdf-link" href="pdf/paperjet-control-map.pdf">PDF</a></div>
       </article>
       <article class="item">
+        <a class="thumb" href="maintenance-card.html"><img src="img/thumbs/maintenance-card.jpg" alt="Care and jams card" loading="lazy"></a>
         <h3><a href="maintenance-card.html">Care and jams</a></h3>
         <p>Pre-shift checks, the weekly clean and clearing a jam with the special tool.</p>
         <div class="meta"><span class="model">A4</span><a class="btn pdf-link" href="pdf/paperjet-maintenance-card.pdf">PDF</a></div>
@@ -80,7 +86,7 @@ footer.hubf { max-width: 1180px; margin: 0 auto; padding-top: 28px; color: var(-
 
   <section class="facts">
     <div><h3>Fast</h3><p>Up to 1.2 metres of paper a second, cut to any length from 30 cm to 1015 cm.</p></div>
-    <div><h3>Five modes</h3><p>Length, Removal, Manual, Series and three preset keys, all from one knob and a foot switch.</p></div>
+    <div><h3>Five modes</h3><p>Length, Takeout, Manual, Series and three preset keys, all from one knob and a foot switch.</p></div>
     <div><h3>Simple upkeep</h3><p>A weekly clean-out of paper scraps. Jams clear with the special tool in the box.</p></div>
   </section>
 </main>

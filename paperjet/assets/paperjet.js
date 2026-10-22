@@ -96,12 +96,30 @@
     });
   }
 
-  // PDF links only make sense where the PDFs are served (GitHub Pages, local copy).
+  // PDF links. On GitHub Pages or a local copy they are plain links. Inside a Claude artifact the
+  // frame blocks plain downloads, so the button fetches the PDF and offers it through the
+  // downloads capability; if that is not available in this view the buttons are hidden.
   function pdfLinks() {
-    if (/claude|claudeusercontent/.test(location.hostname)) {
-      var links = document.querySelectorAll('.pdf-link');
-      for (var i = 0; i < links.length; i++) links[i].hidden = true;
-    }
+    if (!/claude|claudeusercontent/.test(location.hostname)) return;
+    var links = Array.prototype.slice.call(document.querySelectorAll('.pdf-link'));
+    links.forEach(function (l) { l.hidden = true; });
+    if (!window.claude || !window.claude.use) return;
+    window.claude.use('downloads').then(function (downloads) {
+      if (!downloads) return;
+      links.forEach(function (l) {
+        l.hidden = false;
+        l.addEventListener('click', function (e) {
+          e.preventDefault();
+          var href = l.getAttribute('href');
+          var label = l.textContent;
+          l.textContent = 'Preparing…';
+          fetch(href).then(function (r) { if (!r.ok) throw new Error('missing'); return r.blob(); })
+            .then(function (blob) { return downloads.save({ filename: href.split('/').pop(), data: blob }); })
+            .catch(function () {})
+            .then(function () { l.textContent = label; });
+        });
+      });
+    }).catch(function () {});
   }
 
   function init() {
